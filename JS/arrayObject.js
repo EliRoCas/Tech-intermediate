@@ -62,7 +62,7 @@ const arrayFind = [5]
 
 // -----------------------------------------------------------------------------------------//
 
-// MÉTODO MATH () -- Permite recorrer el arreglo y modificar los elementos de él 
+// MÉTODO MAP () -- Permite recorrer el arreglo y modificar los elementos de él 
 // retornando un nuevo array con la misma longitud del original
 
 const structures = dev.map(pro => {
@@ -70,11 +70,18 @@ const structures = dev.map(pro => {
         name: pro.name,
         lastName: pro.lastName,
         languages: pro.languages,
-
-
-
+        data: `${pro.name} - ${pro.languages}`
     }
-})
+});
+console.log(structures);
+
+//Ejemplo 2 
+let numbers = [10, 20, 30, 70];
+let multiplication = 2;
+let products = numbers.map(number => number * multiplication);
+console.log(products)
+
+//20, 40, 60, 140 
 
 
 
