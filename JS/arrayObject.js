@@ -128,6 +128,7 @@ console.log(sortII);
 //Function Compare 
 
 function Compare(a, b) {
+
     if (a < b) {
         return - 1
     }
@@ -138,3 +139,4 @@ function Compare(a, b) {
     return 0
 }
 console.log(Compare(4, 6));
+
