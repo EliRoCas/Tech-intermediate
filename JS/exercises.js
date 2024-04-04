@@ -52,7 +52,7 @@ console.log(animalsOrderX) // resultado con la operación ternaria
 console.log(animalsOrderXX) // resultado con la función arrow sin ternaria 
 
 
-//Otro ejemplo 
+//Para que el resultado mostrado en consola salga con los valores de la comparación 
 const compareAges = (a, b) => {
     if (a.age < b.age) {
         return -1;
