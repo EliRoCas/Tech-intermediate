@@ -531,6 +531,54 @@ nums.toSpliced(1, 1) // => [1, 3] ¡Nuevo Array!
 console.log(nums) // => [1, 2, 3] ¡✅ No modificó el original!
 
 
+//MÉTODOS FLAT -- Crea un matriz de 
 
+const numFlat = [1, 2, 3, 4, 5, 6, [7, 8, 9, 10, [11, 12, 13, 14, 15, [16, 17, 18, 19, 20]]]];
+console.log(numFlat.flat());
+const numFlatI = [1, 2, 3, 4, 5, 6, [7, 8, 9, 10]];
+console.log(numFlatI.flat());
+
+//Ejemplo II 
+var arr = [1, 2, [3, 4]];
+arr.flat();
+console.log(arr);
+
+var arrI = [1, 2, [3, 4, [5, 6]]];
+arr.flat();
+console.log(arrI);
+
+var arrII = [1, 2, [3, 4, [5, 6]]];
+arr.flat(2);
+console.log(arrII);
+
+
+// MÉTODO ISARRAY() VS INSTANCEOF
+
+
+
+
+
+//MÉTODO FROM()
+
+
+
+// FUNCION PARAMETROS REST
+function sumar(a, b, c, ...otros) {
+    let suma = a + b + c;
+    otros.forEach(n => suma += n);
+    return suma;
+}
+
+console.log(sumar(2, 4, 5, 5));
+console.log(sumar(2, 4, 5, 5, 3));
+console.log(sumar(2, 4, 5, 5, 3, 4, 5));
+console.log(sumar(2, 4, 5, 5, 5, 8, 9));
+console.log(sumar(2, 4, 5, 5));
+
+
+// OPERADOR SPREAD --concatenar arrays
+const nuSpr = [1, 2, 3, 4, 5, 6];
+const numSpr = [6, 7, 8, 9, 10, 11, 12];
+console.log(nuSpr, numSpr);
 
 
