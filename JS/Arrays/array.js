@@ -1,3 +1,11 @@
+// FILTER -- crea un nuevo array que contiene sólo los elementos del array original que cumplan con 
+// una condición especificada en la función de filtro. 
+
+const fruTasX = ["mango", "manzana", "pera", "piña", "fresa", "papaya", "naranja", "uva"];
+const resultX = fruTasX.filter(value => value.length < 7); // en este caso la condición es que los 
+//caractéres deben tener una longitud menor a 7
+console.log(resultX);
+
 // PUSH -- Agrega elementos a mi arreglo al final de mi array 
 let list = ["Manzana", "Uva", "Fresa", 12, 25, "Hola, Mundo"];
 list.push("ultimo");

@@ -279,3 +279,16 @@ while (c <= 51) {
     }
     c++
 }
+
+// MÉTODO FOR EACH 
+
+// FOR EACH -- Recorre los elementos de un arreglo 
+// el for each recibe un callback como argumento (parámetro). En este caso
+// el callback está llamando una función anónima que contiene un parámetro (elementos)
+// que representará cada elemento del array.
+// Por cada elemento del array, el for each ejecutará el callback 
+
+const array = [10, 12, 13, 14, 'web', 'php', 'visual', '.net'];
+array.forEach(function(elementos){
+    console.log(elementos);
+})
