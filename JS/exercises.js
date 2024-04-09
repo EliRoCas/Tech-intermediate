@@ -83,16 +83,90 @@ const totalSalary = highSalaryEmployees.reduce((sum, employee) => sum + employee
 console.log(`Total de salarios de empleados con salario mayor a 2500000: ${totalSalary}`);
 
 
-//Ejercicio - Lógica de programación 
+//--------------------------------------------------------------------------------------------//
 
+// Ejercicio 5 - EJEMPLO TRY/CATCH
+try {
+    // Intenta ejecutar esta operación
+    let result = 10 / 0; // Esto provocará un error de división por cero
+    console.log(result); // Esta línea nunca se ejecutará debido al error
+} catch (error) {
+    // Maneja el error
+    console.log("Se produjo un error:", error.message);
+}
+
+// --------------------------------------------------------------------------------------------------------//
+
+//Ejercicio 6 -  Primise.all
+
+// Función que devuelve una promesa que se resuelve después de un tiempo que se estipulará en los arrays
+function resolveAfter(time, value) { //usamos dos parámetros que se llenarán más adelante en el array
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(value)
+        }, time);
+    });
+}
+
+// Array de promesas con diferentes tiempos de espera y diferentes valores/mensajes
+const promises = [
+    resolveAfter(5000, 'Primera promesa'),
+    resolveAfter(7000, 'Segunda promesa'),
+    resolveAfter(10000, 'Tercera promesa')
+];
+
+// Se usa Promise.all() para esperar a que todas las promesas se resuelvan
+Promise.all(promises)
+    .then(results => {
+        console.log('Todas las promesas se han resuelto:'); // si es exitoso
+        console.log(results);
+    })
+    .catch(error => {
+        console.error('Al menos una promesa fue rechazada:'); // si falla
+        console.error(error);
+    });
+
+
+
+// -----------------------------------------------------------------------------------------------// 
+
+//Ejercicio 7 - Lógica de programación 
+
+// Crear una función que no pase parámetros, pero si debe definir dentro de ella un cálculo matemático
+// debe contener, además, una promesa con .then .catch y luego con async/await
+
+
+function math() {
+    let div = 25 / 5;
+    return div;
+}
+
+function getMath() {
+    return new Promise((resolve, reject) => {
+        const div = math();
+        if (div === 8) {
+            reject(new Error('Hubo un problema con la división'));
+        }
+        setTimeout(() => {
+            resolve(div);
+        }, 2500)
+    })
+}
+// getMath()
+//     .then((div) => console.log(div))
+//     .catch((error) => { console.log(error.message) });
+
+async function resMath() {
+    const a = await getMath();
+    console.log(a);
+};
+resMath();
 
 //----------------------------------------------------------------------------------------------------------------------------//
 
 
 
-
-
-// Ejercicio 3 - Arreglo con métodos Sort, toSorted y Compare 
+// Ejercicio 8  - Arreglo con métodos Sort, toSorted y Compare 
 // Montar un arreglo usando el método sort y el toSorted, usando el comparador llamando, en lugar 
 // de la función comparador un sort. Definir 5 objetos que van a contener dos propiedades: nombre-edad
 // Luego llamar al arreglo, lanzándole la función Sort, pero implementando en ella un comparador donde 
