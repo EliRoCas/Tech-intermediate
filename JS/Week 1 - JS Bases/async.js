@@ -116,7 +116,32 @@ async function showData() {
     console.log(teams)
 };
 
-showData(); 
+showData();
 
 
 // ---------------------------------------------------------------------------------------------// 
+
+// Crear una función que no pase parámetros, pero si debe definir dentro de ella un cálculo matemático
+// debe contener, además, una promesa con .then .catch y luego con async/await
+
+let a = 45;
+let b = 35;
+let res;
+
+function operaciones() {
+    return new Promise((resolve, reject) => {
+        res = a * b;
+        if (res === 1575) {
+            resolve('El resultado es correcto ');
+        } else {
+            reject('error')
+        }
+    });
+}
+
+operaciones()
+    .then(function (mensaje) {
+        console.log(mensaje)
+    }).catch(function (error) {
+        console.log(error)
+    })
