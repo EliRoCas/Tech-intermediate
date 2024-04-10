@@ -327,8 +327,117 @@ freelance1.write1();
 
 // ----------------------------------------------------------------------------------------------------------------------------------// 
 
+// Ejercicio 9 -- Encapsulamiento GET - SET 
 
-// Ejercicio 9  - Arreglo con métodos Sort, toSorted y Compare 
+//Crear una clase que se llame animal, con tres parámetros, tres instancias, con una propiedad que esté null
+// para utilizar el get y el set
+
+class Animal {
+    constructor(name, age, color) {
+        this.name = name;
+        this.age = age;
+        this.color = color;
+        this.species = null;
+    }
+
+    get getSpecies() {
+        return this.species;
+    }
+
+    set setSpecies(species) {
+        this.species = species;
+    }
+}
+
+class Dog extends Animal {
+    constructor(name, age, color, loyalty) {
+        super(name, age, color);
+        this.loyalty = loyalty;
+    }
+}
+
+class Cat extends Animal {
+    constructor(name, age, color, purring) {
+        super(name, age, color);
+        this.purring = purring;
+    }
+}
+class Elephant extends Animal {
+    constructor(name, age, color, bigEars) {
+        super(name, age, color);
+        this.bigEars = bigEars;
+    }
+}
+
+
+const dog1 = new Dog("Dante", 3, "black and white", true);
+console.log(dog1);
+dog1.setSpecies = "Chihuaha";
+console.log(dog1.getSpecies);
+
+const cat1 = new Cat("Kira", 7, "gray", true);
+console.log(cat1);
+cat1.setSpecies = "Azul Ruso";
+console.log(cat1.getSpecies);
+
+const elephant1 = new Elephant("Triz", 2, "gray", true);
+console.log(elephant1);
+elephant1.setSpecies = "Africano";
+console.log(elephant1.getSpecies);
+
+
+// -----------------------------------------------------------------------------------------------------// 
+
+// Ejercicio 11 - HERENCIA Y POLIMORFISMO - Con lógica 
+
+class Car {
+    constructor(type, displacement, brand, passagers) {
+        this.type = type;
+        this.displacement = displacement;
+        this.brand = brand;
+        this.passagers = passagers;
+    }
+
+    SOAT() {
+        console.log(`${this.type} tien el SOAT vigente`)
+    }
+}
+
+class Motorcycle extends Car {
+    constructor(type, displacement, brand, passagers, chargeCapacity) {
+        super(type, displacement, brand, passagers);
+        this.chargeCapacity = chargeCapacity;
+    }
+    SOAT() {
+        super.SOAT();
+        const calculateSOAT = () => { // Se crea esta contante, para aplicar el condicional if ks
+            if (this.displacement < 100) {
+                console.log(`Este año, 2024, el valor pagado fue de 230200`);
+            } else if (this.displacement >= 100 && this.displacement < 200) {
+                console.log(`Este año, 2024, el valor pagado fue de 308500`)
+            } else if (this.displacement > 200) {
+                console.log(`Este año, 2024, el valor pagado fue de 830100`)
+            }
+        };
+        calculateSOAT();
+    }
+}
+
+let gn125 = new Motorcycle("Gasolina", 124, "Suzuki", "200kg");
+console.log(gn125);
+gn125.SOAT();
+
+let vstrom = new Motorcycle("Gasolina", 650, "Suzuki", "400 kg");
+console.log(vstrom);
+vstrom.SOAT();
+
+let vogue = new Motorcycle("Híbrida", 250, "AKT", "250kg");
+console.log(vogue);
+vogue.SOAT();
+
+// ---------------------------------------------------------------------------------------------------//
+
+// Ejercicio 10  - Arreglo con métodos Sort, toSorted y Compare 
 // Montar un arreglo usando el método sort y el toSorted, usando el comparador llamando, en lugar 
 // de la función comparador un sort. Definir 5 objetos que van a contener dos propiedades: nombre-edad
 // Luego llamar al arreglo, lanzándole la función Sort, pero implementando en ella un comparador donde 
