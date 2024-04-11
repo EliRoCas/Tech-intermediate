@@ -9,29 +9,43 @@
 
 
 function mergesort(left, right) {
+    // Se inicializan contadores y un arreglo vacío para almacenar el resultado final
     let i = 0;
     let d = 0;
     let res = [];
 
+    // Se itera mientras haya elementos en los arreglos de entrada
     while (i < left.length || d < right.length) {
+        // Se usa la condición if, para verificar si se han recorrido todos los elementos de "left", 
+        // si sí, se agregan los restantes de "right" al resultado
         if (i === left.length) {
             res.push(right[d]);
-            ++d;
-        } else if (d === right.length || left[i] <= right[d]) {
+            // se incrementa el valor de "d" antes de usarlo, para acceder al siguiente elemento del arreglo "right"
+            ++d; 
+        } 
+        // Si se han recorrido todos los elementos de "right", 
+        // se agregan los restantes de "left" al resultado
+        else if (d === right.length || left[i] <= right[d]) {
             res.push(left[i]);
             ++i;
-        } else {
+        } 
+        // Si ninguno de los casos anteriores se cumple, se agrega el elemento de "right" al resultado
+        else {
             res.push(right[d]);
             ++d;
         }
     }
+    // Se devuelve el arreglo resultante
     return res;
 }
 
 let num = [2, 11, 23, 45, 67];
 let num2 = [3, 12, 24, 55, 87];
 
+// Se llama a la función mergesort con los arreglos 
 let answer = mergesort(num, num2);
+
+// Se imprime el resultado y la longitud del arreglo resultante
 console.log(answer);
 console.log(answer.length);
 
