@@ -12,7 +12,79 @@
         <h1>TALENTO-TECH</h1>
     </header>
     <main>
-        <p>BootCamp - Intermedio </p>
+        <h2>Bootcamp - Intermedio</h2>
+
+        <section>
+            <h2>Patrones de Diseño</h2>
+            <p>
+                Los patrones de diseño son soluciones o plantillas reutilizables y probadas a problemas
+                comunes que se encuentran en el diseño de software. Presentan diferentes
+                niveles de abstracción y resolución de problemas en el desarrollo de software
+            </p>
+            <p>
+                Se diferencian de la Arquitectura de Software, puesto que los patrones operan a un nivel
+                microsemántico del código y la aplicación, mientras que la Arquitectura lo hace a un nivel
+                macro y supersemántico, es decir, trabaja sobre la estructura general del sistema y cómo
+                los diferentes componentes y módulos interactuan entre sí.
+            </p>
+            <p>
+                Por consiguiente, se puede decir que la Arquitectura tiene una abstracción de alto
+                nivel, ocupándose de características que afectan a todo el sistema, mientras que los
+                Patrones de Diseño tienen una abstracción de bajo nivel, dado que se centran en
+                problemas específicos o puntuales de diseño, es decir, fragmentos puntuales de
+                código y su interrelación.
+            </p>
+
+            <h3>Tipos de Patrones de Diseño </h3>
+            <p>
+                Existen diferentes tipos de patrones de diseño, aunque no todos son aplicables a todo
+                contexto, siempre depende del objetivo que se quiera lograr y la evaluación del desarrollador.
+            </p>
+            <h4>Patrones de Creación</h4>
+            <ol>
+                <li>Singleton: Restringe la instanciación de una clase a sólo una instancia y
+                    proporciona un punto de acceso global a ella.
+                </li>
+                <li>Factory Method: Define la interfaz para crear un objeto, pero permite a las
+                    subclases decidir qué clase instanciar.
+                </li>
+            </ol>
+            <h4>Patrones Estructurales</h4>
+            <ol>
+                <li>Decorador: Permite agregar funcionalidades a un objeto, sin alterar el comportamiento
+                    de otras instancias de la misma clase </li>
+                <li>Adapter: Permite que dos intrefaces incompatibles trabajen juntas.
+                    Para ello crea un clase adaptora que convierte un interfaz en otra, para que
+                    los objetos puedan interactuar sin problemas.
+                </li>
+            </ol>
+            <h4>Patrones de comportamiento</h4>
+            <ol>
+                <li>Observer: Define una relación de 'suscripción-publicación' entre objetos.
+                    Cuando el estado de un objeto cambia, notifica a los objetos suscritos, que
+                    pueden realizar acciones en respuesta a este cambio.
+                </li>
+                <li>Mediador: Define un objeto, el cual encapsula cómo otros objetos van a interactuar.
+                    Se diferencia del observador, ya que necesita un nuevo objeto que funcione como mediador,
+                    que escuche.
+                </li>
+                <li>Strategy: Define una familia de algoritmos y permite que se intercambien de manera
+                    dinámica. Permite que un algoritmo o comportamiento específico sea seleccionado en tiempo
+                    de ejecución según las necesidades del contexto.
+                </li>
+            </ol>
+            <h4>Otros patrones </h4>
+            <ol>
+                <li>MVC - Model View Controler: Usado comunmente para desarrollar interfaces de usuario.
+                    Divide la lógica de la app en 3 elementos, el modelo (la lógica general, las leyes y la lógica
+                    de negoco), la vista (representación visual de los datos) y el controlador (captura o recibe
+                    los datos ).
+                </li>
+                <li>Flux: Es un ciclo circular, donde el usuario realiza una acción, el modelo la toma, analiza
+                    y responde</li>
+            </ol>
+        </section>
+
     </main>
     <footer>
         <p>Eli Rosero Castañeda</p>
@@ -34,8 +106,11 @@
     <script src="/JS/Week 2 - POO/polymorphism.js" type="module"></script>-->
     <!-- <script src="/JS/Week 3 - Arrays/array.js" type="module"></script>  
     <script src="/JS/Week 4 - Pilas - Colas/binarySearch.js" type="module"></script> 
-    <script src="/JS/Week 4 - Pilas - Colas/quickSort.js" type="module"></script> -->
-    <script src="/JS/Week 4 - Pilas - Colas/margeSort.js" type="module"></script> 
+    <script src="/JS/Week 4 - Pilas - Colas/quickSort.js" type="module"></script> 
+    <script src="/JS/Week 4 - Pilas - Colas/margeSort.js" type="module"></script>
+    <script src="/JS/Week 4 - Data Structure/selectionSort.js" type="module"></script>-->
+    <script src="/JS/Week 4 - Data Structure/insertionSort.js" type="module"></script>
+
 
 
 </body>

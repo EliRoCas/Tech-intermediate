@@ -1,21 +1,13 @@
-// FILTER -- crea un nuevo array que contiene sólo los elementos del array original que cumplan con 
-// una condición especificada en la función de filtro. 
+// MÉTODOS PARA MANIPULAR ARRAYS 
 
-const fruTasX = ["mango", "manzana", "pera", "piña", "fresa", "papaya", "naranja", "uva"];
-const resultX = fruTasX.filter(value => value.length < 7); // en este caso la condición es que los 
-//caractéres deben tener una longitud menor a 7
-console.log(resultX);
+//LENGTH -- Retorna la longitud del array 
+console.log(l.length);
 
-// PUSH -- Agrega elementos a mi arreglo al final de mi array 
-let list = ["Manzana", "Uva", "Fresa", 12, 25, "Hola, Mundo"];
-list.push("ultimo");
-console.log(list);
-console.log(list[2]);
+// Traer la primera posición 
+console.log(l[0]);
 
-// traer n elementos del arreglo usando un bucle 
-for (let i = 4; i <= 6; i++) {
-    console.log(list[i]); // con esto se accede sólo a los elementos 4, 5, 6
-};
+
+//-----------------------------------------------------------------------------------------// 
 
 // Slice -- Extrae una parte de un array y regresa uno nuevo con dichos elementos. Toma dos parámetros opcionales: 
 // el índice inicial y el índice de finalización  (este no se incluye en el array)
@@ -46,6 +38,27 @@ console.log(array);
 
 //-----------------------------------------------------------------------------------------------//
 
+// FILTER -- crea un nuevo array que contiene sólo los elementos del array original que cumplan con 
+// una condición especificada en la función de filtro. 
+
+const fruTasX = ["mango", "manzana", "pera", "piña", "fresa", "papaya", "naranja", "uva"];
+const resultX = fruTasX.filter(value => value.length < 7); // en este caso la condición es que los 
+//caractéres deben tener una longitud menor a 7
+console.log(resultX);
+
+// PUSH -- Agrega elementos a mi arreglo al final de mi array 
+let list = ["Manzana", "Uva", "Fresa", 12, 25, "Hola, Mundo"];
+list.push("ultimo");
+console.log(list);
+console.log(list[2]);
+
+// traer n elementos del arreglo usando un bucle 
+for (let i = 4; i <= 6; i++) {
+    console.log(list[i]); // con esto se accede sólo a los elementos 4, 5, 6
+};
+
+// -------------------------------------------------------------------------------------------// 
+
 //FILL -- cambia los elementos de un array, por una valor estático 
 //Ejemplo 1  
 const value = Array(200).fill(0);
@@ -63,15 +76,21 @@ console.log(array1.fill(6));  // Expected output: Array [6,6,6,6]
 
 // ARRAY por posiciones 
 const fruits = ["lulo", "fresa", "manzana", "papaya"];
-let firstE = fruits[0];
+let firstE = fruits[0]; // El [0] indica que se llamará al primer índice del array 
 console.log(firstE);
+
+const f = fruits[fruits.length - 1]; // al agregarle .length -1 nos trae el último elemento del array "papaya"
+console.log(f);
+
 
 //-------------------------------------------------------------------------------------//
 
 // FOREACH: ejecuta la función indicada una vez por cada elemento del array 
+// Utiliza un callback 
 // Ejemplo 1 
-fruits.forEach(function (el, index) {
-    console.log(`<li id = "${index}">${el}</li>`);
+// Se va recorriendo el arreglo uno a uno 
+fruits.forEach(function (el, index) { // tenemos dos parámetros, el elemento "el" y el índice "index" 
+    console.log(`<li id = "${index}">${el}</li>`); // Se le dice que traiga estos parámetros en forma de lista
 })
 
 // Ejemplo 2 
@@ -87,6 +106,13 @@ fruits2.forEach(e =>
     console.log(e));
 
 
+// El forEach se diferencia del MAP, porque el primero se utiliza para realizar una acción específica 
+// en cada elemento de un array, pero sin modificar el array original o crear uno nuevo. 
+// Por su parte MAP se utiliza para transformar cada elemento de un array en un nuevo valor
+// retornando un nuevo array con esos valores transformados. 
+
+
+
 // ----------------------------------------------------------------------------------------------//
 
 
@@ -94,7 +120,7 @@ fruits2.forEach(e =>
 // especificada por una función de filtrado. Los elementos que devuelven "true", se incluirán. 
 
 const numbersXD = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 20, 21, 22, 23, 24, 25, 35, 36, 37, 38, 39, 50, 51, 52, 53, 54, 55];
-const respO = numbersXD.filter(calculateN);
+const respO = numbersXD.filter(calculateN); // la función que see envía es la que se pone a continuación
 
 function calculateN(result) {
     return result % 2 == 0;
@@ -123,6 +149,7 @@ const dev = [
         name: "Triz",
         lastName: "Rocas",
         languages: "Java y C#",
+        languages2: ["Java", "C#"],
     },
     {
         id: 3,
@@ -173,21 +200,38 @@ console.log(res);
 const rest = developer.find(post => post.id == 3);
 console.log(rest);
 
-// Ejemplo para usar FIND para búsquedas específicas (8:22 REVISAR )
-const arrayFind = [5]
+// Ejemplo para usar FIND para búsquedas específicas 
+const arrayFind = [5, 12, 8, 130, 44, 78, 98, 120];
+const numberFind = arrayFind.find(a => {
+    console.log("n", a);
+    return a === 98; // Va a devolver el valor que sea igual a 98 en el array
+})
+
+console.log(numberFind);
+
+// Es útil cuando se necesita encontrar una coincidencia específica. Mientras que el 
+// .filter recorre el arreglo uno a uno buscando todo lo que cumpla la condición, el find 
+// sólo busca la coincidencia precisa. Esto se traduce en menor tiempo de ejecución. 
 
 
 // -----------------------------------------------------------------------------------------//
 
 // MÉTODO MAP () -- Permite recorrer el arreglo y modificar los elementos de él 
-// retornando un nuevo array con la misma longitud del original
+// retornando un nuevo array con la misma longitud del original. Crea un nuevo array con los resultados
+// de la acción que se le envía. 
 
+// Se crea un constante const structures = dev.map(pro => { ... }):
+// que captará el nuevo array.  Además, utiliza el método map en el array dev. Así, map toma una función
+// de callback que recibe un elemento (pro) del array dev en cada iteración y devuelve un nuevo valor 
+//transformado. 
+//El resultado final es un nuevo array structures que contiene los objetos transformados.
 const structures = dev.map(pro => {
     return {
-        name: pro.name,
-        lastName: pro.lastName,
-        languages: pro.languages,
-        data: `${pro.name} - ${pro.languages}`
+        name: pro.name, // Asigna el valor de la propiedad name del objeto pro al nuevo objeto que se está creando.
+        lastName: pro.lastName, // Asigna el valor de la propiedad lastName del objeto pro al nuevo objeto que se está creando.
+        languages: pro.languages, //  Asigna el valor de la propiedad languages del objeto pro al nuevo objeto que se está creando.
+        data: `${pro.name} - ${pro.languages}` // Crea una propiedad data que contiene una cadena de texto formada por el nombre (pro.name) 
+        // y los lenguajes de programación (pro.languages) del objeto pro.
     }
 });
 console.log(structures);
@@ -201,11 +245,24 @@ console.log(products)
 //20, 40, 60, 140 
 
 //Ejemplo 3 
+let prefix = ["super", "spider", "ant", "iron"];
+let sufix = "man";
+
+let fullNames = prefix.map(prefix => prefix + sufix);
+console.log(fullNames) // Nos debe retornar ["superman", "spiderman", "antman"]
 
 
+// Ejemplo 4 
+
+let numbMap = [3.7, 4.9, 6.2];
+let round = numbMap.map(function (numero) {
+    return Math.round(numero);
+})
+console.log(round)
 
 // -----------------------------------------------------------------------------------------//
-// METODO SORT() Ordena los elementos del array y retrona el arreglo ordenado en orden ascendente (A a Z) por defecto
+// METODO SORT() Ordena los elementos del array y retrona el arreglo ordenado en orden ascendente (A a Z)
+// por defecto
 
 const arraySort = [5, 6, 77, 8, 55, 59, 120, 98, 2, 5, 22, 35, 50];
 const order = arraySort.sort((a, b) => a - b);
@@ -223,12 +280,28 @@ console.log(sortI);
 
 
 //Ejemplo 3 
-console.log([80, 9, 100].sort()); //No ordena "propiamente dicho, los valores"
-console.log([80, 9, 100].sort((a, b) => a - b));
+console.log([80, 9, 100].sort()); // Se aplica el método, pero como hay un paréntesis antes del array lo vuelve string 
+console.log([80, 9, 100].sort((a, b) => a - b)); // Acá se agrega una función de comparación
+// Esto es lo mismo que esto: 
+//FUNCIÓN COMPARE 
 
-const n = [80, 90, 2, 6, 89];
-n.sort();
-console.log(n)
+// function Compare(a, b) {
+
+//     if (a < b) {
+//         return - 1
+//     }
+//     if (a > b) {
+//         return 1
+//     }
+//     // si a = b 
+//     return 0
+// }
+// console.log(Compare(4, 6));
+
+
+const nSort = [80, 90, 2, 6, 100]; // Acá al existir un arreglo, sí lo ordena.
+nSort.sort();
+console.log(nSort);
 
 
 // Ejemplo 4 
@@ -268,7 +341,41 @@ items.sort(function (a, b) {
 console.log(items);
 
 
+// Ejemplo 5 - Sort con Map 
 
+const listM = ["Delta", "alpha", "Charlie", "bravo"];
+
+// array temporal, que contine objetos con posicion y valor de ordenamiento 
+// Usamos el método map, para aplicar la funcion toLowerCase a cada elemento del array original y 
+//captarlo en una nueva constante "mapped"
+const mapped = listM.map(function (el, i) {
+    return { index: i, value: el.toLowerCase() };
+});
+
+// Ordenamos el array mapeado que contiene los valores reducidos 
+// Ya con la función aplicada y el nuevo array resultante, le aplicamos el método sort para ordenar. 
+// Para ello usamos una función de comparación. 
+mapped.sort(function (a, b) {
+    if (a.value > b.value) {
+        return 1;
+    } if (a.value < b.value) {
+        return -1;
+    }
+    return 0;
+});
+
+// contenedor para el orden resultante
+// Se usa el método map para crear una nueva copia del array "mapped", que ya ha sido iterado con el 
+// método sort. Y se le indica que tome los elementos index (indice original del array ListM) y 
+//value (valor del elemento convertido con el toLowerCase), en cada iteracón para acceder a ese elemento 
+// original, tomarlo y ordenarlo con base a la función mappeada. 
+// Así, se crea un nuevo array "resultMS" que contine los elementos originales de ListM, pero en la 
+// ubicación del array mapped 
+const resultMS = mapped.map(function (el) {
+    return listM[el.index];
+});
+
+console.log(resultMS)
 
 
 //------------------------------------------------------------------------------------------------------//
@@ -292,41 +399,29 @@ console.log(sortII);
 
 // -----------------------------------------------------------------------------------------------------//
 
-//FUNCIÓN COMPARE 
+//MÉTODO SOME () -- Recorre el array y nos regresa un booleano si, como mínimo, uno de los 
+// elementos presentes cumple con la condición; es decir, permite comprobar. 
 
-function Compare(a, b) {
-
-    if (a < b) {
-        return - 1
-    }
-    if (a > b) {
-        return 1
-    }
-    // si a = b 
-    return 0
-}
-console.log(Compare(4, 6));
-
-
-
-// ----------------------------------------------------------------------------------------------//
-
-//MÉTODO SOME () -- nos regresa un booleano, es decir, permite comprobar. 
+// Estamos usando el array dev que se creó con anterioridad 
 const songg = dev.some(post => post.id == 5);
 console.log(songg);
 
 
-
 //-----------------------------------------------------------------------------------------------//
 
-//MÉTODO INCLUDES -- valida si Un elemento existe dentro de una variable
+//MÉTODO INCLUDES -- valida si Un elemento existe dentro de una variable y regresa un booleano 
 const arreg = [35, 28, 31, 25, 29];
 console.log(arreg.includes(35));
 console.log(arreg.includes(20));
 
+// Ejemplo 1.1 
+const arg = [35, 28, 31, 25, 29];
+console.log(arg.includes(35)); //true 
+console.log(arg.includes(12)); // false 
+
 
 // Ejemplo 2 --Método some() con Método includes()
-const incluD = dev.some(posta => posta.languages.includes("Java y C#"));
+const incluD = dev.some(posta => posta.languages("Java y C#"));
 console.log(incluD);
 
 
@@ -373,6 +468,9 @@ const employees = [
 let testFilter = employees.filter(post => post.name.includes('Luisa Martinez'));
 console.log(testFilter);
 
+
+// --------------------------------------------------------------------------------------------------------------------------------//
+
 // MÉTODO EVERY  -- Itera un array y retorna un booleano, pero  permite saber si la palabra,  
 //  por ejemplo "recat" se incluye en todos los objetos o no. 
 
@@ -400,7 +498,6 @@ const union = ejem1.concat(ejem2);
 console.log(union);
 
 
-
 // --------------------------------------------------------------------------------------------------------//
 
 // MÉTODO JOIN()  -- sirve como método de separación
@@ -415,17 +512,21 @@ console.log(alf.join(','));
 
 //MÉTODO REDUCE() -- Aplica una función a un acomulador y a cada valor de una array 
 // (de izquierda a derecha) para reducirlo a un único valor 
-// pasa dos parámetros 
+// pasa dos parámetros, un acomulador (a) que acomula todas las iteraciones. (a) en la primera iteración toma el valor del 
+// primer elemento del array, o de un valro inicial dado en el reduce()
+// el segundo valor (b) representa el valor del array de la iteración actual. 
+// En cada iteración, el valor de (a) se actualiza con el resultado de la función de reducción, que toma a y b como parámetros. 
+// Después de la última iteración, el método devuelve el valor final acumulado. 
 
 const numberReduce = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const num = numberReduce.reduce((a, b) => a + b); //estos parámetros (a, b) pueden llevar cualquier nombre (acum , nuevo) x ej
-console.log(num);
+console.log(num); // retorna la suma total del arreglo 55 
 
 
 // ----------------------------------------------------------------------------------------------------------------------// 
 
 //MÉTODO INDEXOF() -- Retorna el primer índice en el que se puede encontrar un elemento dado en el array. 
-//Sino retorna un -1
+//Sino retorna un -1 si el elemento no está presente 
 
 const frutas = ["manzana", "pera", "ajo", "piña", "melocotón", "123", "989565", "uva"];
 const valueIndex = frutas.indexOf('ajo');
@@ -461,8 +562,8 @@ console.log(fru);
 
 // MÉTODO UNSHIFT() -- Inserta un elemento al inicio de mi arreglo, modifica su extensión
 const frut = ["manzana", "pera", "ajo", "piña", "melocotón", "123", "989565", "uva"];
-console.log(frut.unshift("programación"))
-console.log(frut)
+console.log(frut.unshift("programación"));
+console.log(frut);
 
 
 //------------------------------------------------------------------------------------------------------------------//
@@ -470,7 +571,7 @@ console.log(frut)
 //MÉTODO REVERSE() -- Cambia el orden del array, modificando el arreglo original
 const fruitZYX = ["manzana", "pera", "ajo", "piña", "melocotón", "123", "989565", "uva"];
 console.log(fruitZYX.reverse());
-console.log(fruitZYX)
+console.log(fruitZYX); // Imprime el nuevo arreglo con lo valores invertidos
 
 //MÉTODO TOREVERSEd() -- Al igual que reverse, invierte los elementos del array, pero crea una 
 // copia y mantiene el original.
@@ -494,7 +595,7 @@ console.log(itemsAB); // [1, 2, 3] el original
 //utiliza 3 parámetros (la posición o índice de inicio, cuantos elementos se reemplazan, el valor)
 
 const spliceE = ["nombre", "apellido", "correo", "direccion"];
-const spliced = spliceE.splice(1, 1, "profesion");
+const spliced = spliceE.splice(1, 1, "profesion"); //Reemplazo 1 elemento, en la posición del índice 1 
 
 console.log(spliced);
 console.log(spliceE);
@@ -504,6 +605,7 @@ console.log(spliceE);
 const months = ['Jan', 'March', 'April', 'June'];
 months.splice(1, 0, 'Feb');
 // Inserts at index 1
+//No se reemplaza, porque le indicamos 0 
 console.log(months);
 // Expected output: Array ["Jan", "Feb", "March", "April", "June"]
 
@@ -539,25 +641,46 @@ nums.toSpliced(1, 1) // => [1, 3] ¡Nuevo Array!
 console.log(nums) // => [1, 2, 3] ¡✅ No modificó el original!
 
 
-//MÉTODOS FLAT -- Crea un matriz de 
+//---------------------------------------------------------------------------------------------------//
+
+//MÉTODOS FLAT -- Crea un nuevo array con todos los elementos de sub-array, concatenados 
+// recursivamente hasta la profundidad especificada.
+// Se usa para "aplanar un array", es decir, para convertir un array, que contiene arrays anidados
+// en un solo array con todos los elementos en un solo nivel. 
+// Puede aceptar 1 parámetro: "depth" que indica el nivel de profundidad de este proceso. 
+// Por defecto es 1, lo que indica que se aplanará el array a un sólo nivel de anidamiento.
+// Esto significa que sólo tomará el primer arreglo anidado, si hay más anidaciones, las ignorará.
 
 const numFlat = [1, 2, 3, 4, 5, 6, [7, 8, 9, 10, [11, 12, 13, 14, 15, [16, 17, 18, 19, 20]]]];
-console.log(numFlat.flat());
+console.log(numFlat.flat()); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, [11, 12, 13, 14, 15, [16, 17, 18, 19, 20]]]
+
 const numFlatI = [1, 2, 3, 4, 5, 6, [7, 8, 9, 10]];
-console.log(numFlatI.flat());
+console.log(numFlatI.flat()); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 //Ejemplo II 
 var arr = [1, 2, [3, 4]];
-arr.flat();
-console.log(arr);
+arr.flat(); // hay sólo un nivel de anidamiento, se puede dejar con el valor por defecto  
+console.log(arr); // [1, 2, 3, 4]
 
 var arrI = [1, 2, [3, 4, [5, 6]]];
-arr.flat();
-console.log(arrI);
+arr.flat(); // no se especifica valor, sólo aplanará el primer nivel, no profundizara 
+console.log(arrI); // [1, 2, 3, 4, [5, 6]]
 
 var arrII = [1, 2, [3, 4, [5, 6]]];
-arr.flat(2);
-console.log(arrII);
+arr.flat(2); // se especifica que hay dos niveles de anidamiento o de profundidad, toma los dos arrays anidados
+console.log(arrII); // [1, 2, 3, 4, 5, 6]
+
+
+// --------------------------------------------------------------------------------------------// 
+
+// MÉTODO ISARRAY() -- Determina si el valor pasado es un Array 
+Array.isArray([]);  //true
+Array.isArray([1]); //true
+Array.isArray([new Array()]);//true 
+Array.isArray([new Array([1,2,3])]); //false
+Array.isArray([new Array (3)]); //false
+// Array.prototype también es un array 
+Array.isArray([Array.prototype]); 
 
 
 // MÉTODO ISARRAY() VS INSTANCEOF
@@ -566,27 +689,10 @@ console.log(arrII);
 
 
 
-//MÉTODO FROM()
+//MÉTODO FROM() // Crea una nueva instancia de Array a partir de un objeto iterable 
+console.log(Array.from("abcdefghijklmn")); // En este caso, toma la cadena de texto y, cada elemento, lo 
+// transforma en un nuevo elemento separado del array.  
 
 
-
-// FUNCION PARAMETROS REST
-function sumar(a, b, c, ...otros) {
-    let suma = a + b + c;
-    otros.forEach(n => suma += n);
-    return suma;
-}
-
-console.log(sumar(2, 4, 5, 5));
-console.log(sumar(2, 4, 5, 5, 3));
-console.log(sumar(2, 4, 5, 5, 3, 4, 5));
-console.log(sumar(2, 4, 5, 5, 5, 8, 9));
-console.log(sumar(2, 4, 5, 5));
-
-
-// OPERADOR SPREAD --concatenar arrays
-const nuSpr = [1, 2, 3, 4, 5, 6];
-const numSpr = [6, 7, 8, 9, 10, 11, 12];
-console.log(nuSpr, numSpr);
 
 

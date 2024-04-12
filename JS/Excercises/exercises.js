@@ -388,7 +388,7 @@ console.log(elephant1.getSpecies);
 
 // -----------------------------------------------------------------------------------------------------// 
 
-// Ejercicio 11 - HERENCIA Y POLIMORFISMO - Con lógica 
+// Ejercicio 10 - HERENCIA Y POLIMORFISMO - Con lógica 
 
 class Car {
     constructor(type, displacement, brand, passagers) {
@@ -435,9 +435,51 @@ let vogue = new Motorcycle("Híbrida", 250, "AKT", "250kg");
 console.log(vogue);
 vogue.SOAT();
 
+
+
 // ---------------------------------------------------------------------------------------------------//
 
-// Ejercicio 10  - Arreglo con métodos Sort, toSorted y Compare 
+// Ejercicio 11 - FOREACH VS MAP 
+
+//forEach
+
+const array0 = [1, 2, 3, 4, 5]; //Se crea un array, 
+array0.forEach(element => { // Se aplica el método forEach a una función arrow, donde a cada elemento del
+    console.log(element * 2);  // array lo multiplica por 2 y lo imprime.  
+});
+
+
+//MAP 
+
+const arrayM = [1, 2, 3, 4, 5]; // Se crae un nuevo array
+const newArray = arrayM.map(elementM => elementM * 2); // Se crea una constante donde se almacenará
+//el arreglo resultante de aplicar la función arrow, es decir, multiplicar cada elemento del array por 2 
+console.log(newArray);  // Imprime [2, 4, 6, 8, 10] 
+
+
+
+//-------------------------------------------------------------------------------------------------// 
+
+// Ejercicio 13 - Array usando Filter 
+
+// Declaración de un array 
+const numbersF = [15, 20, 30, 45, 60, 75, 100, 105, 120, 150, 180];
+
+// Utilizamos el método filter para encontrar los números que son múltiplos de 3 y 5
+const multiplesOf3And5 = numbersF.filter(num => {
+    // Comprobamos si el número es divisible por 3 y 5 usando el operador de módulo (%)
+    // Si el resultado es igual a 0, significa que el número es divisible por ambos
+    return num % 3 === 0 && num % 5 === 0;
+});
+
+// Imprimimos los números que son múltiplos de 3 y 5
+console.log(multiplesOf3And5);  // [15, 30, 45, 60, 75, 105, 150]
+
+
+
+//-----------------------------------------------------------------------------------------------// 
+
+// Ejercicio 13  - Arreglo con métodos Sort, toSorted y Compare 
 // Montar un arreglo usando el método sort y el toSorted, usando el comparador llamando, en lugar 
 // de la función comparador un sort. Definir 5 objetos que van a contener dos propiedades: nombre-edad
 // Luego llamar al arreglo, lanzándole la función Sort, pero implementando en ella un comparador donde 
@@ -544,3 +586,120 @@ console.log(animalsOrderIII); // resultado con la función arrow normal
 
 console.log(animalsI); // array original
 
+
+
+// ----------------------------------------------------------------------------------------------// 
+//Ejercicio 14 - isArray VS instanceOF 
+
+
+//ISARRAY 
+// Definición de diferentes objetos
+const arr = [1, 2, 3];
+const str = "Hola";
+const num = 42;
+
+// Verificación de si los objetos son arrays usando Array.isArray()
+console.log(Array.isArray(arr)); // true, arr es un array
+console.log(Array.isArray(str)); // false, str es una cadena de texto
+console.log(Array.isArray(num)); // false, num es un número
+
+
+//INSTANCEOF 
+// Definición de diferentes objetos
+class Persona {
+    constructor(name) {
+        this.name = name;
+    }
+}
+
+const persona = new Persona("Juan");
+const arrI = [1, 2, 3];
+const strI = "Hola";
+
+// Verificación de si los objetos son instancias de diferentes constructores usando instanceof
+console.log(persona instanceof Persona); // true, persona es una instancia de la clase Persona
+console.log(arrI instanceof Array); // true, arr es una instancia de la clase Array
+console.log(strI instanceof String); // false, str es una cadena de texto primitiva, no una instancia de la clase String
+
+
+// Aunque ambos funcionan para verificar, el isARray() determina unicamente si es o no un Array
+// por su parte, el instanceOF() puede usarse para verificar si un objeto es una instancia de CUALQUIER 
+// función constructor. 
+// Además, instanceOf() no funciona con objetos primitivos (cadenas de texto o números, etc)
+// mientras que isArray si puede verificar si un objeto primitivo es un array 
+
+
+
+// ---------------------------------------------------------------------------------------------------//
+
+// Ejercicio 15 - margeSort
+
+// Función Merge Sort
+function mergeSort(arr) {
+    // Si el array tiene 1 elemento o está vacío, está ordenado, así que se retorna tal cual
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    // Calcular el punto medio del array para dividirlo en dos
+    const middle = Math.floor(arr.length / 2);
+
+    // Dividir el array en dos mitades
+    const left = arr.slice(0, middle); //Usamos el método .slice() para extraer una copia de cada 
+    // mitad del array, desde middle hasta el final
+    const right = arr.slice(middle);
+
+    // Recursivamente aplicar Merge Sort a las dos mitades
+    const sortedLeft = mergeSort(left); // los datos de cada iteración de almancenan 
+        const sortedRight = mergeSort(right); // en sortedLeft y sortedRaight respectivamente
+
+    // Combinar las dos mitades ordenadas en un solo array ordenado usando el método merge 
+    return merge(sortedLeft, sortedRight);
+}
+
+// Función merge para combinar dos arrays ordenados
+function merge(left, right) {
+    // Array resultado
+    let result = [];
+    // Pivotes para recorrer los arrays left y right
+    let i = 0;
+    let j = 0;
+
+    // Mientras haya elementos en left o right
+    while (i < left.length && j < right.length) {
+        // Comparar elementos de left y right
+        if (left[i] <= right[j]) {
+            // Si el elemento en left es menor o igual, agregarlo a result
+            result.push(left[i]);
+            // Incrementar el pivote de left
+            i++;
+        } else {
+            // Si el elemento en right es menor, agregarlo a result
+            result.push(right[j]);
+            // Incrementar el pivote de right
+            j++;
+        }
+    }
+
+    // Agregar los elementos restantes de left o right si quedan
+    while (i < left.length) {
+        result.push(left[i]);
+        i++;
+    }
+    while (j < right.length) {
+        result.push(right[j]);
+        j++;
+    }
+
+    // Retornar el array resultante ordenado
+    return result;
+}
+
+// Array de números desordenados
+const array = [12, 11, 13, 5, 6, 7];
+
+// Aplicar Merge Sort al array y obtener un array ordenado
+const sortedArray = mergeSort(array);
+
+// Imprimir el array ordenado
+console.log(sortedArray);
