@@ -64,3 +64,5 @@ let arr = [12, 2, 3, 41, 5, 6, 7, 83, 9, 10, 11, 18, 13, 22, 34, 15, 56, 35, 66,
 console.log(arr);
 let res = inSort(arr);
 console.log(res);
+
+// recordar que la notación arr[j] se refiere al elemento en la posición j del array arr.
