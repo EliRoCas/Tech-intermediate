@@ -21,14 +21,14 @@ function mergesort(left, right) {
         if (i === left.length) {
             res.push(right[d]);
             // se incrementa el valor de "d" antes de usarlo, para acceder al siguiente elemento del arreglo "right"
-            ++d; 
-        } 
+            ++d;
+        }
         // Si se han recorrido todos los elementos de "right", 
         // se agregan los restantes de "left" al resultado
         else if (d === right.length || left[i] <= right[d]) {
             res.push(left[i]);
             ++i;
-        } 
+        }
         // Si ninguno de los casos anteriores se cumple, se agrega el elemento de "right" al resultado
         else {
             res.push(right[d]);
@@ -88,3 +88,14 @@ function mergeSort(arr) {
     // envía los dos sub arreglos a la función merge
     return merge(left, right);
 }
+
+
+let numMerge = [2, 47, 11, 23, 5, 45, 25, 89, 67];
+
+
+// Se llama a la función mergesort con los arreglos 
+let answerMerge = mergeSort(numMerge);
+
+// Se imprime el resultado y la longitud del arreglo resultante
+console.log(answerMerge);
+console.log(answerMerge.length);

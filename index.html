@@ -10,86 +10,56 @@
 <body>
     <header>
         <h1>TALENTO-TECH</h1>
+        <nav><a href="/designPatterns.html">Patrones de Diseño</a></nav>
+        <nav><a href="/referenceMaterial.html">Material de Referencia</a></nav>
     </header>
     <main>
         <h2>Bootcamp - Intermedio</h2>
+        <p>El material trabajado hasta la fecha está organizado en una carpeta general denominada "JS",
+            que contiene diferentes subcarpetas en las que se encuentran los diferentes fragmentos de código.
+        </p>
+        <p>Por una lado, se tienen las actividades vistas o desarrollas en las sesiones de clase.
+            Todas ellas dentro de subcarpetas que inician con la palabra "Week" y
+            el número de la semana cuando se trabajaron. Dentro de cada subcarpeta se encuentra, a su vez, el código
+            visto durante las clases de dicha semana.
+        </p>
+        <p>Por otro lado, se tienen los ejercicios que se realizan a modo de práctica. Estos
+            se encuentran ordenados dentro de la carpeta "Excercises" y divididos en subcarpetas
+            que inician con el índice "W + número de la semana + nombre del tema globla" (W1-JSbases).
+            Dentro de estas subcarpetas se encuentran los diferentes archivos con los diferentes ejercicios
+            desarrollados de forma particular a modo de práctica.
+        </p>
 
-        <section>
-            <h2>Patrones de Diseño</h2>
-            <p>
-                Los patrones de diseño son soluciones o plantillas reutilizables y probadas a problemas
-                comunes que se encuentran en el diseño de software. Presentan diferentes
-                niveles de abstracción y resolución de problemas en el desarrollo de software
-            </p>
-            <p>
-                Se diferencian de la Arquitectura de Software, puesto que los patrones operan a un nivel
-                microsemántico del código y la aplicación, mientras que la Arquitectura lo hace a un nivel
-                macro y supersemántico, es decir, trabaja sobre la estructura general del sistema y cómo
-                los diferentes componentes y módulos interactuan entre sí.
-            </p>
-            <p>
-                Por consiguiente, se puede decir que la Arquitectura tiene una abstracción de alto
-                nivel, ocupándose de características que afectan a todo el sistema, mientras que los
-                Patrones de Diseño tienen una abstracción de bajo nivel, dado que se centran en
-                problemas específicos o puntuales de diseño, es decir, fragmentos puntuales de
-                código y su interrelación.
-            </p>
-
-            <h3>Tipos de Patrones de Diseño </h3>
-            <p>
-                Existen diferentes tipos de patrones de diseño, aunque no todos son aplicables a todo
-                contexto, siempre depende del objetivo que se quiera lograr y la evaluación del desarrollador.
-            </p>
-            <h4>Patrones de Creación</h4>
-            <ol>
-                <li>Singleton: Restringe la instanciación de una clase a sólo una instancia y
-                    proporciona un punto de acceso global a ella.
-                </li>
-                <li>Factory Method: Define la interfaz para crear un objeto, pero permite a las
-                    subclases decidir qué clase instanciar.
-                </li>
-            </ol>
-            <h4>Patrones Estructurales</h4>
-            <ol>
-                <li>Decorador: Permite agregar funcionalidades a un objeto, sin alterar el comportamiento
-                    de otras instancias de la misma clase </li>
-                <li>Adapter: Permite que dos intrefaces incompatibles trabajen juntas.
-                    Para ello crea un clase adaptora que convierte un interfaz en otra, para que
-                    los objetos puedan interactuar sin problemas.
-                </li>
-            </ol>
-            <h4>Patrones de comportamiento</h4>
-            <ol>
-                <li>Observer: Define una relación de 'suscripción-publicación' entre objetos.
-                    Cuando el estado de un objeto cambia, notifica a los objetos suscritos, que
-                    pueden realizar acciones en respuesta a este cambio.
-                </li>
-                <li>Mediador: Define un objeto, el cual encapsula cómo otros objetos van a interactuar.
-                    Se diferencia del observador, ya que necesita un nuevo objeto que funcione como mediador,
-                    que escuche.
-                </li>
-                <li>Strategy: Define una familia de algoritmos y permite que se intercambien de manera
-                    dinámica. Permite que un algoritmo o comportamiento específico sea seleccionado en tiempo
-                    de ejecución según las necesidades del contexto.
-                </li>
-            </ol>
-            <h4>Otros patrones </h4>
-            <ol>
-                <li>MVC - Model View Controler: Usado comunmente para desarrollar interfaces de usuario.
-                    Divide la lógica de la app en 3 elementos, el modelo (la lógica general, las leyes y la lógica
-                    de negoco), la vista (representación visual de los datos) y el controlador (captura o recibe
-                    los datos ).
-                </li>
-                <li>Flux: Es un ciclo circular, donde el usuario realiza una acción, el modelo la toma, analiza
-                    y responde</li>
-            </ol>
-        </section>
 
     </main>
     <footer>
         <p>Eli Rosero Castañeda</p>
     </footer>
-    <!-- <script src="/JS/exercises.js" type="module"></script> -->
+    <!-- Ejercicios de práctica - Semana 1  -->
+    <!-- <script src="./JS/Excercises/W1-JSbases/1-anonymousFunction.js" type="module"></script>
+    <script src="./JS/Excercises/W1-JSbases/2-forEach.js" type="module"></script>
+    <script src="./JS/Excercises/W1-JSbases/3-filter.js" type="module"></script>
+    <script src="./JS/Excercises/W1-JSbases/4-try-catch.js" type="module"></script>
+    <script src="./JS/Excercises/W1-JSbases/5-promiseAll.js" type="module"></script>
+    <script src="./JS/Excercises/W1-JSbases/6-programmingLogic.js" type="module"></script> -->
+
+    <!-- Ejercicios de práctica - Semana 2  -->
+    <!-- <script src="./JS/Excercises/W2-POO/1-inheritance.js" type="module"></script>
+    <script src="./JS/Excercises/W2-POO/2-prototypicalInheritance.js" type="module"></script>
+    <script src="./JS/Excercises/W2-POO/3-encapsulation.js" type="module"></script>
+    <script src="./JS/Excercises/W2-POO/4-polymorphism.js" type="module"></script> -->
+
+    <!-- Ejercicios de práctica - Semana 3  -->
+    <!-- <script src="./JS/Excercises/W3-arraysMethods/1-forEachVSmap.js" type="module"></script>
+    <script src="./JS/Excercises/W3-arraysMethods/2-arrayFilter.js" type="module"></script>
+    <script src="./JS/Excercises/W3-arraysMethods/3-sort-ToSorted.js" type="module"></script>
+    <script src="./JS/Excercises/W3-arraysMethods/4-isArray-VS-instanceOf.js" type="module"></script> -->
+
+    <!-- Ejercicios de práctica - Semana 4  -->
+    <!-- <script src="./JS/Excercises/W4-dataStructure/1-margeSort.js" type="module"></script>
+    <script src="./JS/Excercises/W4-dataStructure/2-radixSort.js" type="module"></script>
+    <script src="" type="module"></script>
+    <script src="" type="module"></script> -->
 
     <!-- <script src="/JS/Week 1 - JS Bases/variables.js" type="module"></script>
         <script src="/JS/Week 1 - JS Bases/operators.js" type="module"></script>
@@ -106,10 +76,10 @@
     <script src="/JS/Week 2 - POO/polymorphism.js" type="module"></script>-->
     <!-- <script src="/JS/Week 3 - Arrays/array.js" type="module"></script>  
     <script src="/JS/Week 4 - Pilas - Colas/binarySearch.js" type="module"></script> 
-    <script src="/JS/Week 4 - Pilas - Colas/quickSort.js" type="module"></script> 
-    <script src="/JS/Week 4 - Pilas - Colas/margeSort.js" type="module"></script>
-    <script src="/JS/Week 4 - Data Structure/selectionSort.js" type="module"></script>-->
-    <script src="/JS/Week 4 - Data Structure/insertionSort.js" type="module"></script>
+    <script src="/JS/Week 4 - Pilas - Colas/quickSort.js" type="module"></script> -->
+    <!-- <script src="/JS/Week 4 - Data Structure/margeSort.js" type="module"></script> -->
+    <!-- <script src="/JS/Week 4 - Data Structure/selectionSort.js" type="module"></script>
+    <script src="/JS/Week 4 - Data Structure/insertionSort.js" type="module"></script> -->
 
 
 

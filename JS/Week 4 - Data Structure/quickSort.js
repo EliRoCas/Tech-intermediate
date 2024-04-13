@@ -5,46 +5,8 @@
 
 // Ejercicio de ordenamiento Quicksort 
 
-function quicksort(num) {
-    // Se indica que si el arreglo tiene longitud menor o igual a 1, ya está ordenado
-    if (num.length <= 1) {
-        return num;
-    }
 
-    // Definimos arreglos para almacenar los elementos menores y mayores al pivote
-    let left = [];
-    let right = [];
-    let aux = [];// Arreglo auxiliar para almacenar el resultado final
 
-    let pivote = num.pop(); // Elegimos el último elemento como pivote. Se usa el "num.pop()" para
-    // extraer y eliminar el último elemento del arreglo "num", que luego se asigna como el pivote para 
-    // el proceso de particionado en el algoritmo 
-
-    // Longitud del arreglo original
-    let n = num.length;
-
-    // Iteramos sobre el arreglo original
-    for (let i = 0; i < n; i++) {
-        // Si el elemento actual es menor o igual al pivote, lo agregamos a la izquierda (left.push(num[i]))
-        if (num[i] <= pivote) {
-            left.push(num[i]);
-        } else {
-            // Si es mayor, lo agregamos a la derecha (right.push(num[i]))
-            right.push(num[i]);
-        }
-    }
-    // Concatenamos recursivamente los resultados de ordenar los arreglos izquierdo, pivote y derecho
-    return aux.concat(quicksort(left), pivote, quicksort(right));
-}
-
-// Arreglo original desordenado
-let arr = [14, 23, 3, 4, 54, 6, 7, 8, 45, 9, 1, 11, 12, 13, 22, 34, 32, 56, 65, 16, 78, 87, 98];
-
-console.log(arr);
-
-// Llamamos a la función quicksort para ordenar el arreglo y luego imprimimos el arreglo ordenado 
-let res = quicksort(arr);
-console.log(res);
 
 
 
