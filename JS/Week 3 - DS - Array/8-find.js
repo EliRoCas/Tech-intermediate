@@ -1,30 +1,3 @@
-// MÉTODOS PARA MANIPULAR ARRAYS 
-
-// Nos traer la palabra hola
-const test = [1, 2, "true", "bienvenido", ["F", "Y", 8, [3, 4, "hola", "María"]]];
-//console.log(test[4][3][2]);
-
-//Trae la F
-//console.log(test[4][0]);
-
-//Trae a María
-console.log(test[4][3][3]);
-
-
-//-----------------------------------------------------------------------------------------------//
-
-// ARRAY por posiciones 
-const fruits = ["lulo", "fresa", "manzana", "papaya"];
-let firstE = fruits[0]; // El [0] indica que se llamará al primer índice del array 
-console.log(firstE);
-
-const f = fruits[fruits.length - 1]; // al agregarle .length -1 nos trae el último elemento del array "papaya"
-console.log(f);
-
-// ----------------------------------------------------------------------------------------------------//
-
-//ARRAY CON OBJETOS 
-
 const dev = [
     {
         id: 1,
@@ -78,4 +51,25 @@ const developer = [
 
 ]
 
+// FIND() -- Recorre el arreglo y retorna la primera coincidencia que se busca 
 
+// Ejemplo por propiedad 
+const res = developer.find(post => post.languages == "PHP y HTML");
+console.log(res);
+
+// Ejemplo por ID
+const rest = developer.find(post => post.id == 3);
+console.log(rest);
+
+// Ejemplo para usar FIND para búsquedas específicas 
+const arrayFind = [5, 12, 8, 130, 44, 78, 98, 120];
+const numberFind = arrayFind.find(a => {
+    console.log("n", a);
+    return a === 98; // Va a devolver el valor que sea igual a 98 en el array
+})
+
+console.log(numberFind);
+
+// Es útil cuando se necesita encontrar una coincidencia específica. Mientras que el 
+// .filter recorre el arreglo uno a uno buscando todo lo que cumpla la condición, el find 
+// sólo busca la coincidencia precisa. Esto se traduce en menor tiempo de ejecución. 
