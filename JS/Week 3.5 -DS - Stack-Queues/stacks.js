@@ -22,30 +22,30 @@
 
 // Pila usando un arreglo 
 class Stacks {
-    constructor() {
-        this.stack = {}; // Objeto a llenarse
-        this.count = 0; // contador 
-    }
-    push(element) {
-        this.stack[this.count] = element;
-        this.count++;
-        return this.stack;
-    }
-    pop() {
-        this.count--;
-        const element = this.stack[this.count.count];
-        delete this.stack[this.count];
-        return element;
-    }
-    peek() {
-        return this.stack[this.count - 1];
-    }
-    size() {
-        return this.count;
-    }
-    print() {
-        console.log(this.stack);
-    }
+  constructor() {
+    this.stack = {}; // Objeto a llenarse
+    this.count = 0; // contador 
+  }
+  push(element) {
+    this.stack[this.count] = element;
+    this.count++;
+    return this.stack;
+  }
+  pop() {
+    this.count--;
+    const element = this.stack[this.count.count];
+    delete this.stack[this.count];
+    return element;
+  }
+  peek() {
+    return this.stack[this.count - 1];
+  }
+  size() {
+    return this.count;
+  }
+  print() {
+    console.log(this.stack);
+  }
 }
 
 const stackI = new Stacks();
@@ -63,85 +63,87 @@ console.log(stackI.size());
 
 // Ejemplo 2 
 
+
+console.log("Ejercicio 2");
 // Se crea una clase para cada nodo dentro de la pila
 class Node {
-    // El constructor define las propiedades de cada nodo
-    constructor(value) {
-        // `value` representa el valor almacenado en el nodo
-        this.value = value;
-        // `next` es una referencia al siguiente nodo en la pila, inicialmente es `null`
-        this.next = null;
-    }
+  // El constructor define las propiedades de cada nodo
+  constructor(value) {
+    // `value` representa el valor almacenado en el nodo
+    this.value = value;
+    // `next` es una referencia al siguiente nodo en la pila, inicialmente es `null`
+    this.next = null;
+  }
 }
 
 // Se crea la clase para la pila (stack), que tendrá 3 propiedades
 class Stack {
-    // El constructor inicializa las 3 propiedades de la pila
-    constructor() {
-        // `first` es una referencia al primer nodo (cima) de la pila
-        this.first = null;
-        // `last` es una referencia al último nodo (base) de la pila
-        this.last = null;
-        // `size` representa el número de elementos en la pila
-        this.size = 0;
+  // El constructor inicializa las 3 propiedades de la pila
+  constructor() {
+    // `first` es una referencia al primer nodo (cima) de la pila
+    this.first = null;
+    // `last` es una referencia al último nodo (base) de la pila
+    this.last = null;
+    // `size` representa el número de elementos en la pila
+    this.size = 0;
+  }
+
+  // Retorna el último elemento de la pila, sin eliminarlo
+  peek() {
+    return this.first;
+  }
+
+  // Método para insertar un nuevo valor en la pila (operación push)
+  push(val) {
+    // Crear un nuevo nodo con el valor dado
+    let newNode = new Node(val);
+
+    // Si la pila está vacía (no hay nodos)
+    if (!this.first) {
+      // El nuevo nodo será tanto el primero como el último de la pila
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      // Si la pila no está vacía, insertar el nuevo nodo al inicio
+      // Guardar una referencia temporal al primer nodo existente
+      // que almacenara la referencia del primer nodo actual de la pila. 
+      let temporal = this.first;
+
+      // Se crea un nuevo nodo (newNode) con el valor que se quiere agregar a la pila.
+      // Luego, el puntero 'this.first' se actualiza para apuntar a este nuevo nodo. 
+      // Ergo, el nuevo nodo se convierte en el primero de la pila
+      this.first = newNode;
+
+      // Como la variable 'temporal' almacena la referencia al primer nodo anterior de la pila, 
+      // el siguiente nodo (next) del nuevo nodo (this.first) se asigna a temporal. 
+      // Así, el siguiente nodo del nuevo nodo es el nodo temporal
+      this.first.next = temporal;
     }
+    // Incrementar el tamaño de la pila y devolverlo
+    return ++this.size;
+  }
 
-    // Retorna el último elemento de la pila, sin eliminarlo
-    peek() {
-        return this.first;
+  // Método para eliminar el último elemento de la pila (operación pop)
+  pop() {
+    // Si la pila está vacía, no hay nada que eliminar, así que retornar `null`
+    if (!this.first) {
+      return null;
     }
-
-    // Método para insertar un nuevo valor en la pila (operación push)
-    push(val) {
-        // Crear un nuevo nodo con el valor dado
-        let newNode = new Node(val);
-
-        // Si la pila está vacía (no hay nodos)
-        if (!this.first) {
-            // El nuevo nodo será tanto el primero como el último de la pila
-            this.first = newNode;
-            this.last = newNode;
-        } else {
-            // Si la pila no está vacía, insertar el nuevo nodo al inicio
-            // Guardar una referencia temporal al primer nodo existente
-            // que almacenara la referencia del primer nodo actual de la pila. 
-            let temporal = this.first;
-
-            // Se crea un nuevo nodo (newNode) con el valor que se quiere agregar a la pila.
-            // Luego, el puntero 'this.first' se actualiza para apuntar a este nuevo nodo. 
-            // Ergo, el nuevo nodo se convierte en el primero de la pila
-            this.first = newNode;
-
-            // Como la variable 'temporal' almacena la referencia al primer nodo anterior de la pila, 
-            // el siguiente nodo (next) del nuevo nodo (this.first) se asigna a temporal. 
-            // Así, el siguiente nodo del nuevo nodo es el nodo temporal
-            this.first.next = temporal;
-        }
-        // Incrementar el tamaño de la pila y devolverlo
-        return ++this.size;
+    // Guardar una referencia temporal al primer nodo de la pila 
+    // que almacenara la referencia del primer nodo actual de la pila. 
+    let temporal = this.first;
+    // Si el primer nodo es también el último, significa que la pila tiene solo un elemento
+    if (this.first === this.last) {
+      // Por lo tanto, el último nodo se convierte en `null`
+      this.last = null;
     }
-
-    // Método para eliminar el último elemento de la pila (operación pop)
-    pop() {
-        // Si la pila está vacía, no hay nada que eliminar, así que retornar `null`
-        if (!this.first) {
-            return null;
-        }
-        // Guardar una referencia temporal al primer nodo de la pila 
-        // que almacenara la referencia del primer nodo actual de la pila. 
-        let temporal = this.first;
-        // Si el primer nodo es también el último, significa que la pila tiene solo un elemento
-        if (this.first === this.last) {
-            // Por lo tanto, el último nodo se convierte en `null`
-            this.last = null;
-        }
-        // Mover el puntero `first` al siguiente nodo (elimina el nodo actual)
-        this.first = this.first.next;
-        // Decrementar el tamaño de la pila
-        this.size--;
-        // Retornar el valor del nodo eliminado
-        return temporal.value;
-    }
+    // Mover el puntero `first` al siguiente nodo (elimina el nodo actual)
+    this.first = this.first.next;
+    // Decrementar el tamaño de la pila
+    this.size--;
+    // Retornar el valor del nodo eliminado
+    return temporal.value;
+  }
 }
 
 
@@ -163,39 +165,103 @@ stack.push('Eli');
 console.log('size', stack.size);
 console.log(stack);
 
+// -------------------------------------------------------------
 
 // Ejemplo 3 
+console.log("Ejercicio 3");
 
 class StackItem {
-    constructor(value, next) {
-      this.value = value;
-      this.next = next;
-    }
+  constructor(value, next) {
+    this.value = value;
+    this.next = next;
   }
-  
-  class StackII {
-    constructor() {
-      this.head = null;
-    }
-    push(value) {
-      const newValue = new StackItem(value, this.head);
-      this.head = newValue;
-    }
-    pop() {
-      if (this.head) {
-        if (this.head.next) {
-          const secondNode = this.head.next;
-          this.head = secondNode;
-        } else {
-          this.head = null;
-        }
-      }
-    }
-    print() {
-      let currentNode = this.head;
-      while (currentNode) {
-        console.log(currentNode.value);
-        currentNode = currentNode.next;
+}
+
+class StackII {
+  constructor() {
+    this.head = null;
+  }
+  push(value) {
+    const newValue = new StackItem(value, this.head);
+    this.head = newValue;
+  }
+  pop() {
+    if (this.head) {
+      if (this.head.next) {
+        const secondNode = this.head.next;
+        this.head = secondNode;
+      } else {
+        this.head = null;
       }
     }
   }
+  print() {
+    let currentNode = this.head;
+    while (currentNode) {
+      console.log(currentNode.value);
+      currentNode = currentNode.next;
+    }
+  }
+}
+
+
+// ----------------------------------------------------
+// Ejercicio 4 // pila sin apuntadores, utilizando arreglos 
+
+console.log("Ejercicio 4");
+
+class StackIV {
+  constructor() {
+    this.data = [];
+  }
+  push(element) {
+    this.data.push(element);
+  }
+  pop() {
+    return this.data.pop();
+  }
+}
+
+const stackIV = new StackIV;
+stackIV.push(1);
+stackIV.push(2);
+stackIV.push(3);
+stackIV.push(4);
+console.log("Pila", stackIV);
+console.log("pop", stackIV.pop());
+console.log("Nueva pila", stackIV);
+
+// --------------------------------------------------------------------
+// Ejercicio 5 - Pila con lista enlazada. 
+
+console.log("Ejercicio 5")
+
+class StackV {
+  constructor() {
+this.head = null;
+  }
+  push(element){
+    const node = {
+      data: element,
+      next: this.head 
+    };
+    this.head = node; 
+  }
+
+  pop(){
+    const node = this.head;
+    this.head = node.next;
+    return node.data;
+  }
+}
+
+
+
+const stackV = new StackV;
+stackV.push("A");
+stackV.push("B");
+stackV.push("C");
+console.log("Pila", stackV);
+console.log("pop", stackV.pop());
+console.log("Nueva pila", stackV);
+
