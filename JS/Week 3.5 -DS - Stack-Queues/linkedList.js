@@ -121,44 +121,132 @@ console.log("Primero:", linkedListI.head.data);
 console.log("Último:", linkedListI.tail.data);
 
 
-// // crear una clase nodo para cada nodo en la lista
+//------------------------------------------------------------------------------------------
 
-// class Node {
-//     //cada nodo tiene dos propiedades, el valor y el puntero que indica el nodo que sigue
-//     constructor(val) {
-//         this.val = val;
-//         this.next = null;
-//     }
-// }
+// Ejercicio 2 
+console.log("Ejercicio 2 - Lista enlazada única - lista enlazada vinculada");
 
-// // creamos una clase para la lista enlazada
+// Crear una clase nodo para cada nodo en la lista
 
-// class listaEnlazada {
-//     //lleva 3 propiedades: el encabezado, la cola y el tamaño
-//     constructor() {
-//         this.head = null;
-//         this.tail = null;
-//         this.size = 0;
-//     }
+class NodeII {
+    //cada nodo tiene dos propiedades: el valor/data y el puntero que indica el nodo que sigue
+    constructor(val) {
+        this.val = val;
+        this.next = null; //Se deja nulo dado que esta propiedad capturará los datos de nuevos
+    }
+}
 
-//     // método push va a tomar un valor como parámetro y lo asigna al final de la lista enlazada
+// Creamos una clase para la lista enlazada
 
-//     push(val) {
-//         const newNode = new Node(val)
-//         if (!this.head) {
-//             this.head = newNode;
-//             this.tail = this.head;
-//         }
-//         else {
-//             this.tail.next = newNode;
-//             this.tail = newNode;
-//         }
-//         this.size++;
-//         return this
-//     }
-// }
+class linkedListII {
+    //lleva 3 propiedades: el encabezado(head), la cola(tail) y el tamaño(size)
+    constructor() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
+    }
 
-// // instanciar
+    // Método push (en el ejemplo anterior se usaba 'addLast')
+    // va a tomar un valor como parámetro y lo asigna al final de la lista enlazada
 
-// const lista = new listaEnlazada();
-// lista.push
+    push(val) {
+        const newNode = new NodeII(val)
+        if (!this.head) { // Si head está vacía, entonces tanto head como tail tomarán el valor de 'newNode'
+            this.head = newNode;
+            this.tail = this.head;
+        }
+        else { // Si no está vacía, entonces:   
+            this.tail.next = newNode; // next tomará el valor de newNode
+            this.tail = newNode; // y tail será igual a newNode
+        }
+        this.size++;
+        return this.tail
+    }
+
+    // Método para contar la logitud de la lista enlazada 
+    numData = () => {
+        let count = 0;
+        let data = this.head; // Se define que data es = a la cabeza de la lista 
+        if (!data) { // se valida si data no está vacía 
+            return 0;
+        } else { // Si no está vacía, entonces: 
+            count = 1; // aumenta el contador 
+            while (data.next) { //mientras el nodo "data" tenga un nodo next (data.next)
+                data = data.next; // data se actualiza al siguiente nodo,
+                count++; // y se incrementa el contador 
+            }
+        }
+        return count++;
+    }
+
+    // Método para buscar un dato específico dentro de la lista 
+    searchData = (value) => { // Se busca un valor específico (value) en la lista 
+        let data = this.head; // Se define que data es = a la cabeza de la lista 
+        while (data) { // Se realiza un ciclo while mientras data no sea = a null
+            if (data.val === value) { // Se valida, en cada iteración, si el valor del nodo actual (data.val)   
+                //es igual al valor buscado (value)
+                // Este 'val' se toma del constructor del nodo
+                return data; // Si se encuentra el valor
+            }
+            data = data.next; // Si no es data.value no es = al valor buscado (value) data se mueve al suguiente nodo
+        }
+        return null; // si el valor no se encuentra
+    }
+
+    // Método para eliminar por la cola, en el ejemplo 1 se uso (removeLast)
+    pop() {
+        if (!this.head) { // Se valida si la lista está vacía
+            return undefined;
+        }
+        let current = this.head; // Inicializa 'current' como el nodo inicial (head) de la lista
+        let newTail = current; // Inicializa `newTail` como `current` (servirá para encontrar el nuevo último nodo)
+       
+       // Se recorre la lista hasta encontrar el último nodo 
+        while (current.next) { // Mientras current tenga elementos siguientes 
+            newTail = current; // avanza a "newTail" para que apunte al nodo actual
+            current = current.next; // avanza 'current' al siguiente nodo
+        }
+
+// Una vez que 'current' apunta al último nodo
+        this.tail = newTail; // Se establece que la cola será igual a newTail, 
+        this.tail.next = null; // y se elimina el enlace al último nodo
+        this.size--; // por lo que se decrementa el tamaño de la lista 
+
+        if (this.size === 0) { // Se valida que la lista no sea igua la 0 después de eleiminar el último nodo
+            this.head = null;
+            this.tail = null;
+        }
+        return current; // Se retorna el último nodo que fue eliminado
+    }
+
+    // Método que invierte el orden de la lista
+    reverse (){
+        let node = this.head; 
+        this.head = this.tail;
+        this.tail = node;
+        
+        let next; 
+        let current = null; 
+        for(let i = 0; i< this.size; i++){
+            next = node.next; 
+            node.next = current;
+            current = node; 
+            node = next; 
+        }
+        return this;
+    }
+    
+}
+
+// Instanciar y probar el método 
+
+const list = new linkedListII();
+list.push('a');
+list.push('hola');
+list.push('b');
+list.push('world');
+list.push('c');
+console.log(list);
+console.log("searchData", list.searchData("b"));
+console.log("pop", list.pop());
+console.log("Reverse", list.reverse());
