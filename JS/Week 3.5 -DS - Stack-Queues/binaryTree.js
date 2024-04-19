@@ -173,8 +173,49 @@ class binaryTree {
         return successor;
     }
 
-}
+    // Método-Función recorrido en orden que llama a la función recursiva (routeInOrNode)
+    routeInOrder() {
+        this.routeInOrNode(this.root); // Se le indica que comience por la raíz
+    }
 
+    routeInOrNode(node) {
+        if (node !== null) { // Si el nodo no está vacío (igual a nulo) entonces se recorre recursivamente las subramas izquierdas y 
+            // luego las derechas. 
+            this.routeInOrNode(node.left);
+            console.log(node.value); // imprimiendo en cada iteración el valor de las llamadas de los hijos izquierdos y derechos
+            this.routeInOrNode(node.right);
+        }
+    }
+
+    // Método para recorrer el nodo en preorden: Nodo actual, luego hijo izquierdo, luego hijo derecho suscesivamente. 
+    // Llamando recursivamente al método (routeInPreNode)
+    routeInPreorder() {
+        this.routeInPreNode(this.root); // Se le indica que comience por la raíz 
+    }
+
+    routeInPreNode(node) {
+        if (node !== null) { // Se haca una validación, si el nodo no está nulo 
+            console.log(node.value); // entonces se imprime el valor del nodo actual 
+            this.routeInPreNode(node.left); // Luego se recorre recursivamente la rama izquierda 
+            this.routeInPreNode(node.right);// luego recursivamente la derecha. 
+        }
+    }
+
+    // Método para recorrer el árbol en postorden: Se llaman primero a los hijos izquierdos y derechos, luego se imprime el nodo actual 
+    // Todo llamando recursivamente a la función (routeInPostNode)
+    routeInPostorder() {
+        this.routeInPostNode(this.root);
+    }
+
+    routeInPostNode(node) {
+        if (node !== null) { // si el nodo no está vacío
+            this.routeInPostNode(node.left); // Se realiza el recorrido recursivo por la rama del nodo izquierdo 
+            this.routeInPostNode(node.right); // Se realiza el recorrido recursivo por la rama del nodo derecho 
+            console.log(node.value); // Se imprime el valor actual
+        }
+    }
+
+}
 
 const tree = new binaryTree(); // Se crea una nueva instancia de la clase "binaryTree"
 tree.insert("D"); // Se inserta el primer elemento, como está vacío, "D" se convierte en la raíz
@@ -196,18 +237,28 @@ tree.insert("b"); // Dado que "b" es menor que "D", los nodos anteriores están 
 console.log("séptimo elemento agregado", tree);
 
 // Buscar 
-console.log(tree.search("A"));
-console.log(tree.search("a"));
-console.log(tree.search("z"));
+console.log("primera búsqueda", tree.search("A"));
+console.log("segunda búsqueda", tree.search("a"));
+console.log("tercera búsqueda", tree.search("z"));
 
 
-// // Eliminar 
-// tree.delete(); // elimina el menor valor 
-// tree.delete("elimina b", "b"); // elimina le valor "b"
-// tree.delete("elimina la raíz", "D"); // elimina el valor de la raíz (D), por lo que el método lo reemplaza 
+// Eliminar 
+// tree.delete("elimina b", "b"); // elimina el valor "b"
+// tree.delete(); // elimina el menor valor de la raíz
+// tree.delete("D"); // elimina el valor de la raíz (D), por lo que el método lo reemplaza 
 // // por el nodo del subárbol de la derecha, en este caso "a" 
 
+//Recorrer en Orden
+console.log("Recorrer en orden");
+console.log(tree.routeInOrder());
 
+//Recorrer en Preorden 
+console.log("Recorrer en preorden");
+console.log(tree.routeInPreorder());
+
+//Recorrer en Portorden
+console.log("Recorrer en postorden");
+console.log(tree.routeInPostorder())
 
 
 
